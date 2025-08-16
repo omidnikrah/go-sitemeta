@@ -123,35 +123,6 @@ type Client struct {
 }
 ```
 
-### Functions
-
-#### `DefaultConfig() *Config`
-
-Returns a `Config` with sensible defaults:
-- HTTPTimeout: 10 seconds
-- ChromeTimeout: 20 seconds
-- ChromeWaitTime: 1 second
-- UserAgent: Googlebot user agent
-
-#### `NewClient(config *Config) *Client`
-
-Creates a new sitemeta client. If `config` is `nil`, uses default configuration.
-
-#### `GetSiteMeta(websiteURL string) (*SiteMeta, error)`
-
-Convenience function that uses default configuration to extract metadata.
-
-#### `(c *Client) GetSiteMeta(websiteURL string) (*SiteMeta, error)`
-
-Extracts metadata from the given website URL using the client's configuration.
-
-## How It Works
-
-1. **HTTP Extraction**: First attempts to extract metadata using a simple HTTP request
-2. **ChromeDP Fallback**: If no description is found, uses ChromeDP to render JavaScript content
-3. **Metadata Parsing**: Extracts title, description, and image from HTML meta tags
-4. **URL Resolution**: Resolves relative image URLs to absolute URLs
-
 ## Supported Meta Tags
 
 The package extracts metadata from the following meta tags:
@@ -167,16 +138,6 @@ The package extracts metadata from the following meta tags:
 ### Image
 - `property="og:image"`
 - `name="twitter:image"`
-
-## Error Handling
-
-The package provides comprehensive error handling:
-
-- **Invalid URLs**: Returns descriptive error messages for malformed URLs
-- **Network errors**: Handles connection timeouts and network failures
-- **HTTP errors**: Checks for successful HTTP status codes
-- **Parsing errors**: Handles HTML parsing failures gracefully
-- **ChromeDP errors**: Falls back to HTTP results if ChromeDP fails
 
 ## Testing
 
