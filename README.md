@@ -32,7 +32,7 @@ import (
 
 func main() {
     // Simple usage with default configuration
-    meta, err := sitemeta.GetSiteMeta("https://example.com")
+    meta, err := sitemeta.GetSiteMeta("https://omid.toys")
     if err != nil {
         log.Fatal(err)
     }
@@ -70,7 +70,7 @@ func main() {
     client := sitemeta.NewClient(config)
     
     // Extract metadata
-    meta, err := client.GetSiteMeta("https://example.com")
+    meta, err := client.GetSiteMeta("https://omid.toys")
     if err != nil {
         log.Fatal(err)
     }
